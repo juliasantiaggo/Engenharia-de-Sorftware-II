@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        do{
+            var primeiroNumero = parseFloat(prompt('Digite o número: '))
+            if(isNaN(primeiroNumero)) alert('Erro! Número inválido')
+        }while(isNaN(primeiroNumero))
+
+        do{
+            var operador = prompt('Digite o operador: ')
+            if(operador !== 'soma' && operador !== 'subtração') alert('Erro! Operador inválido')
+        }while(operador !== 'soma' && operador !== 'subtração')
+
+        do{
+            var segundoNumero = parseFloat(prompt('Digite o número: '))
+            if(isNaN(segundoNumero)) alert('Erro! Número inválido')
+        }while(isNaN(segundoNumero))
+
+        function calculoSoma(primeiroNumero,segundoNumero){
+            resultado = primeiroNumero + segundoNumero
+            return resultado
+        }
+
+        function calculoSubtracao(primeiroNumero,segundoNumero){
+            resultado = primeiroNumero - segundoNumero
+            return resultado
+        }
+
+
+        switch(operador){
+            case('soma'):
+                resultado = calculoSoma(primeiroNumero,segundoNumero)
+                break
+            case('subtração'):
+                resultado = calculoSubtracao(primeiroNumero,segundoNumero)
+                break
+        }
+
+        alert('o resultado é: ' + resultado)
+        
+    </script>
+</body>
+</html>
