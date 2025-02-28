@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo IMC</title>
+</head>
+<body>
+    <script>
+        do{
+            var nome = prompt("Qual é o seu nome?");
+            if(nome === '') alert('Nome inválido')
+        }while(nome === '')
+          
+       do{
+            var altura = prompt("Qua é a sua altura em centímetros?")
+            if (isNaN(altura) || altura < 0) alert('Altura inválida')
+        }while(isNaN(altura) || altura < 0)
+
+        do{
+            var peso = prompt("Qual é o seu peso em quilos?")
+            if (isNaN(peso) || peso < 0) alert('Peso inválido')
+        }while(isNaN(peso) || peso < 0)
+
+        altura = parseFloat(altura/100)
+        
+        var M = peso / altura ** 2
+        
+        if (M < 16){
+            alert(nome + " possui índice de massa corporal igual a " + M + ", sendo classificado como: Baixo peso muito grave.")
+        } else if (M >= 16 && M < 16.99 ){
+            alert(nome + " possui índice de massa corporal igual a " + M + ", sendo classificado como: Baixo peso grave.")
+        } else if (M >= 17 && M < 18.49){
+            alert(nome + " possui índice de massa corporal igual a " + M + ", sendo classificado como: Baixo peso.")
+        } else if(M >= 18.50 && M < 24.99){
+            alert(nome + " possui índice de massa corporal igual a " + M + ", sendo classificado como: Peso normal.")
+        }else if (M >= 25 && M < 29.99){
+            alert(nome + " possui índice de massa corporal igual a " + M + ", sendo classificado como: Sobrepeso.")
+        } else if (M >= 30 && M < 34.99){
+            alert(nome + " possui índice de massa corporal igual a " + M + ", sendo classificado como: Obesidade grau I.")
+        } else if(M >= 35 && M < 39.99){
+            alert(nome + " possui índice de massa corporal igual a " + M + ", sendo classificado como: Obesidade grau II.")
+        } else{
+            alert(nome + " possui índice de massa corporal igual a " + M + ", sendo classificado como: Obesidade grau III.")
+        }
+    </script>
+</body>
+</html>

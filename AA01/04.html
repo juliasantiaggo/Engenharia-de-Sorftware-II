@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo Frete</title>
+</head>
+<body>
+    <script>
+        var freteFinal = 0
+        let precoTotal = 0
+
+        
+        var rastreamento = prompt("Gostaria de rastrear sua compra?").toLowerCase()
+        if (rastreamento === 'sim' || rastreamento === 's'){
+            
+            rastreamento = 200
+        }else{
+            rastreamento = 0
+        }
+        
+        
+        let qtdPecas
+        do{
+           qtdPecas = parseFloat(prompt("Digite a quantidade de peças: ")) 
+            if (isNaN(qtdPecas) || qtdPecas < 0) alert("Erro! Digite uma quantidade válida ")
+        }while(isNaN(qtdPecas) || qtdPecas < 0)
+
+       
+        function regiao1(qtdPecas){
+            let precoPeca1 = 1
+            let precoDesconto1 = precoPeca1 * 0.9
+            if (qtdPecas <= 1000){
+            precoTotal = qtdPecas * precoPeca1
+                
+            }else{
+                precoTotal = 1000 * precoPeca1
+                let diferenca1 = qtdPecas - 1000
+                precoTotal += diferenca1 * precoDesconto1
+            }
+            return precoTotal
+        }
+               
+        function regiao2(qtdPecas){
+            let precoPeca2 = 1.20
+            let precoDesconto2 = precoPeca2 * 0.88
+
+            if(qtdPecas <= 1000){
+                precoTotal = qtdPecas * precoPeca2
+            }else{
+                precoTotal = 1000 * precoPeca2
+                let diferenca = qtdPecas - 1000
+                 precoTotal += diferenca * precoDesconto2
+            }
+            return precoTotal
+        }
+                    
+
+        function regiao3 (qtdPecas){
+            let precoPeca3 = 1.30
+            let precoDesconto = precoPeca3 * 0.87
+            let precoTotal = 0
+
+            if(qtdPecas <= 1000){
+                precoTotal = qtdPecas * precoPeca3
+            }else{
+                precoTotal = 1000 * precoPeca3
+                let diferenca = qtdPecas - 1000
+                precoTotal += diferenca * precoDesconto
+            }  
+            return precoTotal
+        }
+
+        let regiao
+        do{
+            regiao = parseInt(prompt("Digite a sua região(1-S, 2-SE, 3-CO): "))
+            if (isNaN(regiao) || regiao < 1 || regiao > 3) alert("Erro! Digite uma região válida.")
+        }while(isNaN(regiao) || regiao < 1 || regiao > 3) 
+        
+        switch(regiao){
+            case 1:
+                precoTotal = regiao1(qtdPecas)
+                break
+            case 2:
+                precoTotal = regiao2(qtdPecas)
+                break
+            case 3: 
+                precoTotal = regiao3(qtdPecas)
+                break
+        }
+        
+        do{
+            var km = parseFloat (prompt("Digite a distância em km: "))
+            if (isNaN(km) || km < 0) alert(("Erro! Digite um número válido."))
+        }while(isNaN(km) || km < 0)
+
+        do{
+            var precoLitro = parseFloat (prompt("Digite o valor do combustível na sua cidade: "))
+            if (isNaN(precoLitro) || precoLitro < 0) alert(("Erro! Digite um número válido."))
+        }while(isNaN(precoLitro) || precoLitro < 0)
+        
+        valorPorKm = precoLitro
+        kmTotal = valorPorKm * km
+        freteFinal = precoTotal + kmTotal + rastreamento
+
+        alert('Taxa de rastreamento: R$' + rastreamento + '\nValor do frete pelas peças: R$' + precoTotal + '\nValor do frete por quilômetro: R$' + valorPorKm + '\nValor total do frete: R$' + freteFinal )
+        
+    </script>
+</body>
+</html>

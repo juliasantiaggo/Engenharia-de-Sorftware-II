@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo Média Final</title>
+</head>
+<body>
+    <script>
+        do{
+            var nota1 = parseFloat(prompt("Digite a nota de Atividade prática de laboratório: "))
+            if(isNaN(nota1) || nota1 < 0 || nota1 > 10 ) alert("Erro! Digite a nota de Atividade prática de laboratório novamente: ")
+        }while (isNaN(nota1) || nota1 < 0 || nota1 > 10 )
+
+        do{
+            var nota2 = parseFloat(prompt("Digite a nota da Prova do semestre: "))
+            if(isNaN(nota2) || nota2 < 0 || nota2 > 10) alert("Erro! Digite a nota da Prova do semestre novamente: ")
+        }while(isNaN(nota2) || nota2 < 0 || nota2 > 10)
+
+        do{
+            var nota3 = parseFloat(prompt("Digite a nota do Trabalho teórico: "))
+            if (isNaN(nota3) || nota3 < 0 || nota3 > 10) alert("Erro! Digite a nota do Trabalho teórico novamente: ")
+        }while(isNaN(nota3) || nota3 < 0 || nota3 > 10)
+
+        var peso1 = 2
+        var peso2 = 5
+        var peso3 = 3
+
+
+        function media(nota1,peso1,nota2,peso2,nota3,peso3){
+
+            var NF = (((nota1 * peso1) + (nota2 * peso2) + (nota3 *peso3))/(peso1 + peso2 + peso3))
+
+            if(NF >= 0 && NF <= 5){
+                return ("A média do aluno é: " + (NF % 1 === 0 ? NF.toFixed(0) : NF.toFixed(2)) + " e a sua classificação é: F")
+            } else if(NF > 5 && NF <= 6){
+                return ("A média do aluno é: " + (NF % 1 === 0 ? NF.toFixed(0) : NF.toFixed(2)) + " e a sua classificação é: E")
+            } else if(NF > 6 && NF <= 7){
+                return ("A média do aluno é: " + (NF % 1 === 0 ? NF.toFixed(0) : NF.toFixed(2)) + " e a sua classificação é: D")
+            } else if(NF > 7 && NF <= 8){
+                return ("A média do aluno é: " + (NF % 1 === 0 ? NF.toFixed(0) : NF.toFixed(2)) + " e a sua classificação é: C")
+            } else if(NF > 8 && NF <= 9){
+                return ("A média do aluno é: " + (NF % 1 === 0 ? NF.toFixed(0) : NF.toFixed(2)) + " e a sua classificação é: B")
+            } else if(NF > 9 && NF <= 10){
+                return ("A média do aluno é: " + (NF % 1 === 0 ? NF.toFixed(0) : NF.toFixed(2)) + " e a sua classificação é: A")
+            }
+        }
+
+        mediaFinal = media(nota1,peso1,nota2,peso2,nota3,peso3)
+
+        alert(mediaFinal)
+
+    </script>
+</body>
+</html>

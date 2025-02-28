@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo Salário</title>
+</head>
+    <body>
+       <script>
+        
+        do{
+            var codigo = parseInt(prompt('Digite o código: '))
+            if(isNaN(codigo)) alert('Código inválido')
+        }while(isNaN(codigo))
+
+        do{
+            var horas = parseInt(prompt('Digite o número de horas trabalhadas no mês: '))
+            if(isNaN(horas) || horas < 0) alert('Número de horas inválido')
+        }while(isNaN(horas) || horas < 0) 
+
+        do{
+            var turno = prompt('Digite o turno: (M, V ou N)').toLowerCase()
+            if (turno !== 'n' && turno !== 'v' && turno !== 'm') alert('turno inválido')
+        }while(turno !== 'n' && turno !== 'v' && turno !== 'm')
+
+        do{
+            var categoria = prompt('Digite a categoria: (F ou G)').toLowerCase()
+            if (categoria !== 'f' && categoria !== 'g') alert('Categoria inválida')
+        }while(categoria !== 'f' && categoria !== 'g')
+
+        while(turno === 'n' && categoria === 'g'){
+            alert('Erro! Não é permitido selecionar o turno "N" e a categoria "G" ao mesmo tempo')
+
+
+            do{
+                turno = prompt('Digite o turno: (M, V ou N)').toLowerCase()
+                if (turno !== 'n' && turno !== 'v' && turno !== 'm') alert('Turno inválido')
+            }while(turno !== 'n' && turno !== 'v' && turno !== 'm')
+
+            do{
+                categoria = prompt('Digite a categoria: (F ou G)').toLowerCase()
+                if (categoria !== 'f' && categoria !== 'g') alert('Categoria inválida')
+            }while(categoria !== 'f' && categoria !== 'g')
+        }
+
+        do{
+            var salarioMin = parseFloat(prompt('Digite o valor do salário-mínimo no seu estado: '))
+            if (isNaN (salarioMin) || salarioMin < 0) alert('Salário mínimo inválido')
+        }while(isNaN (salarioMin) || salarioMin < 0)
+
+        function horaTrabalhada1(){
+            return salarioMin * 0.04 
+        }
+
+        function horaTrabalhada2(){
+            return salarioMin * 0.02
+        }
+
+        function horaTrabalhada3(){
+            return salarioMin * 0.01
+        }
+
+        switch(true){
+            case(turno === 'm' && categoria === 'g'):
+                valorHoraTrabalhada = horaTrabalhada1()
+                break
+
+            case(turno === 'v' && categoria === 'g'):
+                valorHoraTrabalhada = horaTrabalhada1()
+                break
+
+            case(turno === 'n' && categoria === 'f'):
+                valorHoraTrabalhada = horaTrabalhada2()
+                break
+
+            case(turno === 'm' && categoria === 'f'):
+                valorHoraTrabalhada = horaTrabalhada3()
+                break
+
+            case(turno === 'v' && categoria === 'f'):
+                valorHoraTrabalhada= horaTrabalhada3()
+                break
+        }
+
+        function calculoSalarioInicial(horas,valorHoraTrabalhada){
+            return valorHoraTrabalhada * horas
+        }
+
+        function calculoAuxAlimentacao(salarioInicial){
+            if(salarioInicial <= 800){
+                return salarioInicial * 0.25
+            } else if(salario > 800 && salarioInicial <= 1200){
+                return salarioInicial * 0.20
+            }else{
+                return salarioInicial * 0.15
+            }
+        }
+
+        salarioInicial = calculoSalarioInicial(horas,valorHoraTrabalhada)
+
+        var auxAlimentacao = calculoAuxAlimentacao(salarioInicial)
+
+        salarioFinal = salarioInicial + auxAlimentacao
+
+        alert('Código: ' + codigo + '\nNúmero de horas trabalhadas: ' + horas + '\nValor da hora trabalhada: ' + valorHoraTrabalhada + '\nSalário Inicial: ' + salarioInicial + '\nAuxílio-alimentação' + '\nSalário Final: ' + salarioFinal )
+
+        
+
+       </script>
+    </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classificação Etária</title>
+</head>
+    <body>
+        <script>
+            do{
+                var idade = parseFloat(prompt('Qual é a sua idade?'))
+                if (isNaN(idade) || idade < 0) alert('Idade inválida')
+            }while(isNaN(idade) || idade < 0)
+           
+            function calculoIdade(idade){
+                if (idade >= 0 && idade < 15){
+                    return 'Você é uma criança!'
+                } else if(idade >= 15 && idade < 60){
+                   return 'Você é um adulto!'
+                } else{
+                    return 'Você é idoso!'
+                }
+            }
+
+            var classificacao = calculoIdade(idade)
+            alert(classificacao)
+        </script>
+    </body>
+</html>

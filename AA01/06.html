@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calculadora</title>
 </head>
 <body>
     <script>
@@ -22,27 +22,17 @@
             if(isNaN(segundoNumero)) alert('Erro! Número inválido')
         }while(isNaN(segundoNumero))
 
-        function calculoSoma(primeiroNumero,segundoNumero){
-            resultado = primeiroNumero + segundoNumero
-            return resultado
+        function calculo(primeiroNumero,segundoNumero,operador){
+            if(operador === 'soma'){
+               return primeiroNumero + segundoNumero
+            }else{
+               return primeiroNumero - segundoNumero
+            }
         }
 
-        function calculoSubtracao(primeiroNumero,segundoNumero){
-            resultado = primeiroNumero - segundoNumero
-            return resultado
-        }
+        var resultado = calculo(primeiroNumero,segundoNumero,operador)
 
-
-        switch(operador){
-            case('soma'):
-                resultado = calculoSoma(primeiroNumero,segundoNumero)
-                break
-            case('subtração'):
-                resultado = calculoSubtracao(primeiroNumero,segundoNumero)
-                break
-        }
-
-        alert('o resultado é: ' + resultado)
+        alert('O resultado é: ' + resultado)
         
     </script>
 </body>
